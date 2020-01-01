@@ -2,7 +2,7 @@
 
 ini_set('display_errors', 1);
 
-define('DSN', 'mysql:dbhost=localhost;dbname=dotinstall_sns_php');
+define('DSN', 'mysql:dbhost=localhost;dbname=sns_php');
 define('DB_USERNAME', 'dbuser01');
 define('DB_PASSWORD', 'password');
 
@@ -36,7 +36,8 @@ class Index extends Controller {
 class Controller {
 
   private $_errors;
-  private $_values;
+  // private $_values;
+  protected $_values;
 
   public function __construct() {
     $this->_errors = new \stdClass();

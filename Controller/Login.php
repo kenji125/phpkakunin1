@@ -6,12 +6,13 @@ require_once(__DIR__ . '/../config.php');
 class Login extends Controller {
 
   public function run() {
-    if ($this->isLoggedIn()) {
-      header('Location: ' . SITE_URL);
-      exit;
-    }
+    // if ($this->isLoggedIn()) {
+    //   header('Location: ' . SITE_URL);
+    //   exit;
+    // }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      //長くなる場合はメソッドにする
       $this->postProcess();
     }
   }
@@ -22,9 +23,11 @@ class Login extends Controller {
     // } catch (\MyApp\Exception\EmptyPost $e) {
     //   $this->setErrors('login', $e->getMessage());
     // }
-
+    
+    //継承にてセット
+    //formでsubmit後、ここでPostされた値がセットされる
     $this->setValues('email', $_POST['email']);
-
+    var_dump($this->_values);
     if ($this->hasError()) {
       return;
     } else {
@@ -44,6 +47,7 @@ class Login extends Controller {
       // $_SESSION['me'] = $user;
 
       // redirect to home
+      // ここで遷移させる
       header('Location: ' . SITE_URL);
       exit;
     }
